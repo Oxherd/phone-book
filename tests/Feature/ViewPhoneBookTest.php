@@ -38,4 +38,15 @@ class ViewPhoneBookTest extends TestCase
             ->assertSee($shouldNotSee->name)
             ->assertDontSee($shouldSee->name);
     }
+
+    /** @test */
+    public function it_is_searchable_by_query_string()
+    {
+        $searchTarget = Contact::factory()->create(['name' => 'search me']);
+        $notTarget = Contact::factory()->create(['name' => 'not me']);
+
+        $this->get('/?search=search me')
+            ->assertSee($searchTarget->name)
+            ->assertDontSee($notTarget->name);
+    }
 }

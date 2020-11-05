@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-3">
         {{ $slot }}
     </div>
 
