@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\PhoneBookTable;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    $data = Contact::paginate(15);
-
-    return response()->json($data, 200, [
-        'Content-Type' => 'application/json;charset=UTF-8',
-        'Charset' => 'utf-8',
-    ], JSON_UNESCAPED_UNICODE);
-});
+Route::get('/', PhoneBookTable::class);
