@@ -19,6 +19,12 @@
         </div>
     </div>
 
+    @if (session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            You successfully created a new contact.
+        </div>
+    @endif
+
     <table class="table table-hover">
         <thead>
             <tr>
