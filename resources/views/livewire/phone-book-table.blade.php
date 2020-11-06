@@ -1,17 +1,5 @@
 <div>
-    <div class="my-3 row justify-content-between">
-        <div class="input-group col-md-8">
-            <input wire:model.debounce.500ms="search" type="text" class="form-control" placeholder="Search">
-
-            @if ($search)
-                <div class="input-group-append">
-                    <button wire:click="resetSearch" type="button" class="btn btn-outline-secondary">
-                        <span>&times;</span>
-                    </button>
-                </div>
-            @endif
-        </div>
-
+    <div class="my-3 row">
         <div class="col pt-3 pt-md-0">
             <div class="float-right">
                 @livewire('create-new-contact')
@@ -21,7 +9,7 @@
 
     @if (session()->has('message'))
         <div class="alert alert-success" role="alert">
-            You successfully created a new contact.
+            {{ session('message') }}
         </div>
     @endif
 

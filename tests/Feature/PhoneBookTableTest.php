@@ -44,16 +44,6 @@ class PhoneBookTableTest extends TestCase
     }
 
     /** @test */
-    public function it_reset_pagination_after_updated_search_property()
-    {
-        Livewire::test(PhoneBookTable::class)
-            ->set('page', 2)
-            ->assertSet('page', 2)
-            ->set('search', 'random search')
-            ->assertSet('page', 1);
-    }
-
-    /** @test */
     public function it_reset_search_property_after_called_resetSearch_action()
     {
         $notInSearch = Contact::factory()->create(['name' => 'not me']);
@@ -64,5 +54,24 @@ class PhoneBookTableTest extends TestCase
             ->call('resetSearch')
             ->assertSet('search', '')
             ->assertSee($notInSearch->name);
+    }
+
+    /** @test */
+    public function it_listening_searchContact_event_for_set_search_property()
+    {
+        Livewire::test(PhoneBookTable::class)
+            ->emit('searchContact', 'something')
+            ->assertSet('search', 'something');
+    }
+
+    /** @test */
+    public function it_listening_resetSearch_event_for_clearout_search_property_and_page()
+    {
+        Livewire::test(PhoneBookTable::class)
+            ->set('search', 'already something')
+            ->set('page', 2)
+            ->emit('resetSearch')
+            ->assertSet('search', '')
+            ->assertSet('page', 1);
     }
 }

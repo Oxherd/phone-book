@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Livewire\PhoneBookTable;
-use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', PhoneBookTable::class);
+Route::get('/', function () {
+    return view('layouts.app');
+});

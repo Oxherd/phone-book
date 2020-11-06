@@ -18,13 +18,22 @@ class PhoneBookTable extends Component
         'search' => ['except' => ''],
     ];
 
-    public function updatingSearch()
+    protected $listeners = [
+        'searchContact',
+        'resetSearch',
+    ];
+
+    public function searchContact($search)
     {
         $this->resetPage();
+
+        $this->search = $search;
     }
 
     public function resetSearch()
     {
+        $this->resetPage();
+
         $this->reset('search');
     }
 

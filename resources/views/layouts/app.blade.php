@@ -23,7 +23,9 @@
 
 <body>
     <div class="container mt-3">
-        {{ $slot }}
+        @livewire('search-contact-field')
+
+        @livewire('phone-book-table')
     </div>
 
     @livewireScripts
