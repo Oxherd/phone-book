@@ -23,10 +23,21 @@
 
 <body>
     <div class="container mt-3">
-        @livewire('search-contact-field')
+        <div class="d-flex justify-content-between mb-3">
+            <div>
+                @livewire('search-contact-field')
+            </div>
+            <div>
+                @livewire('new-contact-button')
+            </div>
+        </div>
 
         @livewire('phone-book-table')
     </div>
+
+    <x-modal-container>
+        @livewire('modal-lookup-table')
+    </x-modal-container>
 
     @livewireScripts
 </body>

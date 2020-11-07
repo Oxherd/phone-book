@@ -1,12 +1,4 @@
 <div>
-    <div class="my-3 row">
-        <div class="col pt-3 pt-md-0">
-            <div class="float-right">
-                @livewire('create-new-contact')
-            </div>
-        </div>
-    </div>
-
     @if (session()->has('message'))
         <div class="alert alert-success" role="alert">
             {{ session('message') }}
