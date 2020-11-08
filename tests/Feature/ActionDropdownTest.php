@@ -29,4 +29,14 @@ class ActionDropdownTest extends TestCase
             ->call('openEditModal')
             ->assertEmitted('swapModal', 'contact-form', "['contact' => {$contact->id}]");
     }
+
+    /** @test */
+    public function it_emit_swapModal_event_when_call_openDeleteModal_action()
+    {
+        $contact = Contact::factory()->create();
+
+        Livewire::test(ActionDropdown::class, compact('contact'))
+            ->call('openDeleteModal')
+            ->assertEmitted('swapModal', 'delete-contact-warning', "['contact' => {$contact->id}]");
+    }
 }

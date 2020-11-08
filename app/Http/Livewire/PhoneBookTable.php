@@ -21,6 +21,7 @@ class PhoneBookTable extends Component
     protected $listeners = [
         'searchContact',
         'resetSearch',
+        'refreshPhoneBookTable' => '$refresh',
     ];
 
     public function searchContact($search)

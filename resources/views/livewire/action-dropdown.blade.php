@@ -4,5 +4,7 @@
     </button>
     <div class="dropdown-menu">
         <a wire:click="openEditModal" data-target="#modal" data-toggle="modal" class="dropdown-item" href="#">Edit</a>
+        <div class="dropdown-divider"></div>
+        <a wire:click="openDeleteModal" data-target="#modal" data-toggle="modal" class="dropdown-item" href="#">Delete</a>
     </div>
 </div>

@@ -15,6 +15,7 @@ class ModalLookupTable extends Component
 
     protected $lookup = [
         'contact-form',
+        'delete-contact-warning',
     ];
 
     public function swapModal($component, $payload = null)

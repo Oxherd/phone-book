@@ -19,6 +19,11 @@ class ActionDropdown extends Component
         $this->emit('swapModal', 'contact-form', "['contact' => {$this->contact->id}]");
     }
 
+    public function openDeleteModal()
+    {
+        $this->emit('swapModal', 'delete-contact-warning', "['contact' => {$this->contact->id}]");
+    }
+
     public function render()
     {
         return view('livewire.action-dropdown');
