@@ -1,6 +1,10 @@
 <div>
     <div class="d-flex justify-content-between align-items-start">
-        <h5 class="modal-title">Create A New Contact</h5>
+        @if ($contact->exists)
+            <h5 class="modal-title">Edit Contact</h5>
+        @else
+            <h5 class="modal-title">Create A New Contact</h5>
+        @endif
         <button type="button" class="close" data-dismiss="modal">
             <span>&times;</span>
         </button>
@@ -42,7 +46,11 @@
         <hr>
         <div class="float-right">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Create</button>
+            @if ($contact->exists)
+                <button type="submit" class="btn btn-primary">Update</button>
+            @else
+                <button type="submit" class="btn btn-primary">Create</button>
+            @endif
         </div>
     </form>
 </div>

@@ -13,6 +13,13 @@ class ContactFormTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function it_show_relate_title_for_create_a_new_contact()
+    {
+        Livewire::test(ContactForm::class)
+            ->assertSee('Create A New Contact');
+    }
+
+    /** @test */
     public function it_can_create_a_new_contact_by_provide_needed_data()
     {
         $data = Contact::factory()->make();
@@ -28,6 +35,19 @@ class ContactFormTest extends TestCase
             ->assertRedirect('/');
 
         $this->assertDatabaseHas('contacts', $data->toArray());
+    }
+
+    /** @test */
+    public function it_generate_success_message_after_call_store_action()
+    {
+        $this->assertFalse(session()->has('message'));
+
+        Livewire::test(ContactForm::class)
+            ->set('name', 'John')
+            ->set('phone_number', '0912345678')
+            ->call('store');
+
+        $this->assertTrue(session()->has('message'));
     }
 
     /** @test */
@@ -59,5 +79,38 @@ class ContactFormTest extends TestCase
             ->assertHasErrors('email');
 
         $this->assertDatabaseCount('contacts', 0);
+    }
+
+    /** @test */
+    public function it_show_edit_contact_title_by_provide_a_contact()
+    {
+        $contact = Contact::factory()->create();
+
+        Livewire::test(ContactForm::class, compact('contact'))
+            ->assertSee('Edit Contact');
+    }
+
+    /** @test */
+    public function it_bind_contact_data_to_property_if_provide_one()
+    {
+        $contact = Contact::factory()->create();
+
+        Livewire::test(ContactForm::class, compact('contact'))
+            ->assertSet('name', $contact->name)
+            ->assertSet('phone_number', $contact->phone_number)
+            ->assertSet('email', $contact->email)
+            ->assertSet('address', $contact->address);
+    }
+
+    /** @test */
+    public function it_will_update_contact_by_provide_existing_contact_and_call_store_action()
+    {
+        $contact = Contact::factory()->create();
+
+        Livewire::test(ContactForm::class, compact('contact'))
+            ->set('name', 'new name')
+            ->call('store');
+
+        $this->assertEquals('new name', $contact->fresh()->name);
     }
 }
