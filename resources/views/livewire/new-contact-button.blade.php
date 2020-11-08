@@ -1,5 +1,5 @@
 <div>
-    <button wire:click="$emit('swapModal', 'create-new-contact')" type="button" class="btn btn-outline-primary"
+    <button wire:click="$emit('swapModal', 'contact-form')" type="button" class="btn btn-outline-primary"
         data-target="#modal" data-toggle="modal">
         New Contact</button>
 </div>

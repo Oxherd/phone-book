@@ -6,14 +6,14 @@ use Livewire\Component;
 
 class ModalLookupTable extends Component
 {
-    public $component = 'create-new-contact';
+    public $component = '';
 
     protected $listeners = [
         'swapModal',
     ];
 
-    protected $table = [
-        'create-new-contact',
+    protected $lookup = [
+        'contact-form',
     ];
 
     public function swapModal($component)
@@ -23,7 +23,7 @@ class ModalLookupTable extends Component
 
     public function render()
     {
-        $component = in_array($this->component, $this->table) ?
+        $component = in_array($this->component, $this->lookup) ?
         "<livewire:{$this->component} />" :
         '';
 

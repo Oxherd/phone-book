@@ -15,8 +15,8 @@ class ModalLookupTableTest extends TestCase
     public function it_will_set_component_property_when_emit_swapModal_event()
     {
         Livewire::test(ModalLookupTable::class)
-            ->emit('swapModal', 'create-new-contact')
-            ->assertSet('component', 'create-new-contact');
+            ->emit('swapModal', 'contact-form')
+            ->assertSet('component', 'contact-form');
     }
 
     /** @test */
@@ -24,7 +24,7 @@ class ModalLookupTableTest extends TestCase
     {
         Livewire::test(ModalLookupTable::class)
             ->set('component', '')
-            ->emit('swapModal', 'create-new-contact')
+            ->emit('swapModal', 'contact-form')
             ->assertSee('Create A New Contact');
     }
 }

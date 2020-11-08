@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Contact;
 use Livewire\Component;
 
-class CreateNewContact extends Component
+class ContactForm extends Component
 {
     public $name;
     public $phone_number;
@@ -18,7 +18,9 @@ class CreateNewContact extends Component
         'email' => 'nullable|email',
     ];
 
-    protected $listeners = ['submitForm' => 'store'];
+    protected $listeners = [
+        'store',
+    ];
 
     public function store()
     {
@@ -38,6 +40,6 @@ class CreateNewContact extends Component
 
     public function render()
     {
-        return view('livewire.create-new-contact');
+        return view('livewire.contact-form');
     }
 }
