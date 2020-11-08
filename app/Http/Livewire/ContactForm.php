@@ -49,8 +49,8 @@ class ContactForm extends Component
             ]);
 
         $message = $this->contact->exists ?
-        'You successfully created a new contact.' :
-        'You successfully update the contact.';
+        'You successfully update the contact.' :
+        'You successfully created a new contact.';
 
         session()->flash('message', $message);
 

@@ -12,6 +12,7 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
                     <td>{{ $contact->phone_number }}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->address }}</td>
+                    <td>
+                        @livewire('action-dropdown', ['contact' => $contact->id], key($contact->id))
+                    </td>
                 </tr>
             @empty
                 <tr class="alert alert-light text-center" role="alert">
